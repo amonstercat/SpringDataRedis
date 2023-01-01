@@ -30,10 +30,10 @@ class SpringDataRedisApplicationTests {
     private   static final ObjectMapper mapper=new ObjectMapper();
     @Test
     void testsaveUser() throws JsonProcessingException {
-            redisTemplate.opsForValue().set("user:01",new User("riha",22));
+            redisTemplate.opsForValue().set("user:01",new User(10,"riha","china",22));
             User obj= (User) redisTemplate.opsForValue().get("user:01");
             System.out.println(obj);
-            User user=new User("kaynewest",40);
+            User user=new User(12,"kaynewest","america",40);
             //手动序列化  把对象序列化为json
             String JSON= mapper.writeValueAsString(user);
              stringRedisTemplate.opsForValue().set("user:02",JSON);
